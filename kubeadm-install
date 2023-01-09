@@ -44,3 +44,12 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config  (Skip)
 export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+
+for worker node add=
+sudo systemctl status kubelet
+sudo kubeadm reset
+rm -rf $HOME/.kube/config
+
+in master node 
+sudo kubeadm token create --print-join-command
+now genrated token copy and peste worker node
